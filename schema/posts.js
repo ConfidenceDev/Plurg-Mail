@@ -29,6 +29,10 @@ const post = new mongoose.Schema({
     type: String,
     required: true,
   },
+  sent: {
+    type: Boolean,
+    default: false,
+  },
   createdAt: {
     type: Date,
     default: Date.now(),
