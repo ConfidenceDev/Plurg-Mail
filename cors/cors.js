@@ -3,7 +3,7 @@ const cors = require("cors");
 const corsHeader = {
   origin: [
     "https://plurg.me",
-    "https://plurg.herokuapp.com",
+    "https://plurg.onrender.com",
     "http:localhost:4732/",
   ],
   methods: ["GET", "PUT", "POST", "DELETE"],
