@@ -2,7 +2,7 @@ const cors = require("cors");
 
 const corsHeader = {
   origin: [
-    "https://plurg.me",
+    "https://www.plurg.me",
     "https://plurg.onrender.com",
     "http:localhost:4732/",
   ],

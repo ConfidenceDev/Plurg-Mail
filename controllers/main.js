@@ -28,7 +28,7 @@ const oAuth2Client = new google.auth.OAuth2(
   REDIRECT_URI
 );
 oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
-const site = "https://plurg.me";
+const site = "https://www.plurg.me";
 const textDefault = `Unfortunately, your email client does not support HTML. 
           You can register with a different email, see ${site} for more info`;
 

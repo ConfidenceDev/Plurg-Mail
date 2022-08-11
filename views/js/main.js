@@ -1,5 +1,5 @@
 const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-const point = "https://plurg.me";
+const point = "https://www.plurg.me";
 
 start();
 
