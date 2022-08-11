@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="An information mailing list, simplifying the reach to latest information on product and services"
+    />
+    <meta
+      name="keywords"
+      content="information, product, services, mail, email, list"
+    />
+    <meta name="author" content="Plurg Inc." />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/modal.css" />
+    <link rel="stylesheet" type="text/css" href="css/media.css" />
+    <link rel="icon" type="image/png" href="./assets/icons/plug.png" />
+    <title>Plurg | Stay Informed</title>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="container flex">
+        <div class="navbar_icon">
+          <h1><a href="index.html">Plurg</a></h1>
+          <img src="./assets/icons/plug.png" alt="icon" />
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#subscribe" class="link">Subscribe</a></li>
+            <li><a href="#explore" class="link">Explore</a></li>
+            <li><a href="policy.html" class="link">Policy</a></li>
+            <li><a href="#footer" class="link">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <section class="home">
+      <p class="home_para container">
+        Join thousands of subscribes in receiving list of information on
+        product, services, promotion, news and fun related whether digital or
+        physical. Available for several categories including:<br /><br />
+        <b
+          >Blockchain, Crypto, NFTs, Science, Tech, Lifestyle, Education,
+          Entertainment, Music, Games, Business, Urban, Fashion, Finance, Apps,
+          Websites etc
+        </b>
+        <br />
+      </p>
+
+      <div class="carousel container">
+        <img src="./assets/images/node.jpeg" />
+        <img src="./assets/images/nature.jpeg" />
+        <img src="./assets/images/tech.jpeg" />
+      </div>
+      <span class="users_count">... Subscribers</span>
+    </section>
+
+    <section id="subscribe" class="subscribe container">
+      <h1>Subscribe to receive daily Newsletter</h1>
+      <div class="broad white_card">
+        <input
+          type="email"
+          name="email"
+          class="email"
+          autocomplete="on"
+          placeholder="Email"
+        />
+        <button class="join_btn">Join</button>
+      </div>
+    </section>
+
+    <section id="explore" class="explore container">
+      <h1>Explore</h1>
+      <div class="mid">
+        <div class="broad white_card">
+          <div class="broad_header">
+            <div class="publish">
+              <h3>Publish</h3>
+              <a href="#popup_info" class="publish_info">How it Works</a>
+            </div>
+          </div>
+          <div class="broad_fields">
+            <div class="publish_container">
+              <input type="file" class="post_img" accept="image/*" />
+              <select name="categories" class="category_list">
+                <option data-category="Select">Select a category</option>
+                <option data-category="Blockchain">Blockchain</option>
+                <option data-category="Crypto">Crypto</option>
+                <option data-category="NFTs">NFTs</option>
+                <option data-category="Science">Science</option>
+                <option data-category="Tech">Tech</option>
+                <option data-category="Lifestyle">Lifestyle</option>
+                <option data-category="Education">Education</option>
+                <option data-category="Music">Music</option>
+                <option data-category="Games">Games</option>
+                <option data-category="Apps">Apps</option>
+                <option data-category="Websites">Websites</option>
+                <option data-category="Business">Business</option>
+                <option data-category="Education">Education</option>
+                <option data-category="Urban">Urban</option>
+                <option data-category="Fashion">Fashion</option>
+                <option data-category="Finance">Finance</option>
+              </select>
+
+              <input
+                type="text"
+                placeholder="Title"
+                class="inputs post_title"
+                autocomplete="off"
+                required
+              />
+              <h4 class="post_field_count">0/127</h4>
+              <textarea
+                type="text"
+                class="inputs post_desc"
+                rows="4"
+                placeholder="Write..."
+                maxlength="127"
+              ></textarea>
+              <input
+                type="url"
+                placeholder="URL"
+                class="inputs post_url"
+                autocomplete="off"
+                required
+              />
+              <input
+                type="email"
+                placeholder="Email Address"
+                class="inputs post_email"
+                autocomplete="on"
+                required
+              />
+              <p class="disclaimer">
+                Disclaimer: A small service fee of $1.99 is required to publish
+              </p>
+            </div>
+            <p>
+              By proceeding you agree to our
+              <a href="policy.html" target="_blank">terms &amp; policy</a>
+            </p>
+            <button class="popup_buttons proceed_btn">Proceed</button>
+          </div>
+        </div>
+        <div class="right">
+          <div class="showcase">
+            <div class="showcase_header">
+              <h3>Showcase</h3>
+            </div>
+            <div class="items">
+              <img src="./assets/images/two.png" alt="demo1" />
+              <img src="./assets/images/one.png" alt="demo2" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="popup_info" class="overlay">
+      <div class="popup">
+        <h2>How it Works</h2>
+        <a class="close" href="#explore">&times;</a>
+        <div class="details">
+          <ul>
+            <li>
+              Share you post with all subscribers by filling out the form,
+              select a category that best fit your post and an image.
+            </li>
+            <li>Ensure to have subscribed first before sharing a post.</li>
+            <li>
+              Emails are sent on a daily basis to subscribers, 5 to 10 post /
+              email, one email a day, subject to change.
+            </li>
+            <li>
+              Disclaimer: Your images should not be graphic, NSFW or illicit to
+              avoid post not being published.
+            </li>
+            <li>
+              Funds are non-refundable, as they are used as service fees. Also
+              fees are coverted to NGN before processing.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="popup_mail" class="overlay">
+      <div class="popup">
+        <h2>Contact Us</h2>
+        <a class="close" href="#contact">&times;</a>
+        <div class="details">
+          <p class="pop_msg">
+            Send us a mail for advert, suggestions, reports and for more
+            inquiries. mail: <b>listreon@gmail.com</b>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div id="popup_msg" class="overlay">
+      <div class="popup">
+        <h2>Alert</h2>
+        <a class="close" href="#subscribe">&times;</a>
+        <div class="details">
+          <p class="pop_alert"></p>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer" id="footer">
+      <ul class="footer_links">
+        <li>
+          <a
+            href="https://twitter.com/ConfidenceDev"
+            target="_blank"
+            class="reach twitter"
+            ><img src="./assets/icons/twitter.png" class="twitter_img"
+          /></a>
+        </li>
+        <li>
+          <a href="#popup_mail" class="reach mail"
+            ><img src="./assets/icons/gmail.png"
+          /></a>
+        </li>
+      </ul>
+      <h3 class="copyright">
+        Plurg Inc &#169; 2022 copyright all rights reserved
+      </h3>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
