@@ -10,7 +10,7 @@ An information mailing list, simplifying the reach to latest information on prod
 
 <p float="left">
 <img src="https://github.com/ConfidenceDev/Plurg/blob/main/screenshots/one.png?raw=true" width="148">
-<img src="https://github.com/ConfidenceDev/Plurg/blob/main/screenshots/two.pngraw=true" width="148">
+<img src="https://github.com/ConfidenceDev/Plurg/blob/main/screenshots/two.png?raw=true" width="148">
 </p>
 
 # Contact
