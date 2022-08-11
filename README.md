@@ -9,8 +9,8 @@ An information mailing list, simplifying the reach to latest information on prod
 # Demo
 
 <p float="left">
-<img src="https://github.com/ConfidenceDev/Plurg/blob/master/screenshots/1.png" width="148">
-<img src="https://github.com/ConfidenceDev/Plurg/blob/master/screenshots/2.png" width="148">
+<img src="https://github.com/ConfidenceDev/Plurg/blob/main/screenshots/one.png?raw=true" width="148">
+<img src="https://github.com/ConfidenceDev/Plurg/blob/main/screenshots/two.pngraw=true" width="148">
 </p>
 
 # Contact
