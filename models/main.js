@@ -47,6 +47,76 @@ async function newPost(data) {
   });
 }
 
+async function checkCredit(email) {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const user = await Users.find({ email: email });
+      if (user.length > 0) {
+        if (user[0].credit > 0) {
+          user[0].credit = user[0].credit - 1;
+
+          Users.findOneAndUpdate({ _id: user[0]._id }, user[0], {
+            new: true,
+            useFindAndModify: false,
+          })
+            .then(() => {
+              resolve({ hasCredit: true, value: user[0].credit });
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        } else {
+          resolve({
+            hasCredit: false,
+          });
+        }
+      }
+    } catch (error) {
+      console.log(error);
+      reject(error);
+    }
+  });
+}
+
+async function getPosts(size) {
+  return new Promise((resolve, reject) => {
+    try {
+      Posts.find({ sent: false })
+        .sort({ createdAt: 1 })
+        .limit(size)
+        .then((data) => {
+          resolve(data);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    } catch (error) {
+      console.log(error);
+      reject(error);
+    }
+  });
+}
+
+async function updatePost(data) {
+  return new Promise((resolve, reject) => {
+    try {
+      Posts.findOneAndUpdate({ _id: data._id }, data, {
+        new: true,
+        useFindAndModify: false,
+      })
+        .then(() => {
+          resolve();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } catch (error) {
+      console.log(error);
+      reject(error);
+    }
+  });
+}
+
 async function findUser(data) {
   return new Promise(async (resolve, reject) => {
     try {
@@ -102,6 +172,9 @@ module.exports = {
   findAll,
   checkEmail,
   newPost,
+  checkCredit,
+  getPosts,
+  updatePost,
   findUser,
   newUser,
   deleteUser,

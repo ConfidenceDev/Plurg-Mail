@@ -6,6 +6,10 @@ const user = new mongoose.Schema({
     required: [true, "Please provide a valid email address."],
     unique: true,
   },
+  credit: {
+    type: Number,
+    default: 3,
+  },
   createdAt: {
     type: Date,
     default: Date.now(),
