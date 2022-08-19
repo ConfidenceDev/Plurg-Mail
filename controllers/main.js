@@ -446,6 +446,8 @@ async function sendMail(to, subject, text, file) {
     const accessToken = await oAuth2Client.getAccessToken();
     const transport = nodemailer.createTransport({
       service: "gmail",
+      secure: false,
+      requireTLS: true,
       auth: {
         type: "OAuth2",
         user: owner,
@@ -454,11 +456,18 @@ async function sendMail(to, subject, text, file) {
         refreshToken: REFRESH_TOKEN,
         accessToken: accessToken,
       },
+      tls: {
+        rejectUnauthorized: false,
+      },
     });
 
     const mailOptions = {
       from: `Plurg <${owner}>`,
       to: to,
+      list: {
+        help: `${owner}?subject=help`,
+        unsubscribe: `${owner}?subject=unsubscribe`,
+      },
       subject: subject,
       text: text,
       html: await readFile(file, "utf8"),
