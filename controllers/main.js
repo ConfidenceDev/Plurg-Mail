@@ -333,29 +333,30 @@ async function loadMailInternal(data) {
     findAll()
       .then((result) => {
         if (result.length > 0) {
-          Promise.allSettled(
-            result.map(async (item) => {
-              const tempPath = "./template/mail.html";
-              const url = `${site}/unsubscribe/`;
-              const file = await readFile(tempPath, "utf8");
-              const $ = cheerio.load(file);
+          async function send(i, items, cb) {
+            if (i >= items.length) return cb();
 
-              $("a.unsubscribe").attr("href", `${url}${item.email}`);
-              await writeFile(tempPath, $.html(), "utf8");
+            const tempPath = "./template/mail.html";
+            const url = `${site}/unsubscribe/`;
+            const file = await readFile(tempPath, "utf8");
+            const $ = cheerio.load(file);
 
-              sendMail(item.email, data[1].theme, textDefault, tempPath).catch(
-                (error) => {
-                  console.log(error.message);
-                }
-              );
-            })
-          )
-            .then(() => {
-              console.log("Completed!");
-            })
-            .catch((error) => {
-              console.log(error);
-            });
+            $("a.unsubscribe").attr("href", `${url}${items[i].email}`);
+            await writeFile(tempPath, $.html(), "utf8");
+
+            sendMail(items[i].email, data[1].theme, textDefault, tempPath)
+              .then(() => {
+                console.log("Sent to: ", items[i].email);
+              })
+              .catch((error) => {
+                console.log(error.message);
+              });
+            setTimeout(send, 10000, i + 1, items, cb);
+          }
+
+          send(0, result, () => {
+            console.log("All done");
+          });
         } else {
           console.log("No available user!");
         }
