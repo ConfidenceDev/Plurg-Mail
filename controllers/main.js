@@ -442,7 +442,7 @@ async function loadMail(data, res) {
 
 async function sendMail(to, subject, text, file) {
   try {
-    const owner = "listreon@gmail.com";
+    const owner = "plurginc@gmail.com";
     const accessToken = await oAuth2Client.getAccessToken();
     const transport = nodemailer.createTransport({
       service: "gmail",
