@@ -1,6 +1,6 @@
 # Plurg-API
 
-An information mailing list, simplifying the reach to latest information on product and services
+An information mailing list, simplifying the reach to latest information on products and services
 
 # Website
 
