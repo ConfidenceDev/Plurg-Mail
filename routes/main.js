@@ -4,7 +4,6 @@ const {
   onStart,
   checkEmailIfExists,
   createPost,
-  pushPost,
   subscribeUser,
   unsubscribeUser,
   joinUser,
@@ -29,13 +28,6 @@ router.post("/posts", async (req, res) => {
   const data = req.body;
   if (data) {
     createPost(data, res);
-  }
-});
-
-router.post("/push", async (req, res) => {
-  const data = req.body;
-  if (data) {
-    pushPost(data, res);
   }
 });
 

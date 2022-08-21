@@ -106,7 +106,7 @@ proceedBtn.addEventListener("click", async (e) => {
                 email: email,
               };
 
-              createPost(amt, email, doc);
+              credit(amt, email, doc);
             };
           } else {
             const doc = {
@@ -118,7 +118,7 @@ proceedBtn.addEventListener("click", async (e) => {
               email: email,
             };
 
-            createPost(amt, email, doc);
+            credit(amt, email, doc);
           }
         } else {
           showMsg(res.data.error);
@@ -132,26 +132,6 @@ proceedBtn.addEventListener("click", async (e) => {
   }
 });
 
-function createPost(amt, email, doc) {
-  axios
-    .post(`${point}/posts`, doc)
-    .then((res) => {
-      if (res.data.status === "passed") {
-        postTitle.value = null;
-        postDesc.value = null;
-        postUrl.value = null;
-        showMsg(
-          `Congratulations, your post is created. You have ${res.data.msg} free post credit left`
-        );
-      } else {
-        credit(amt, email, doc);
-      }
-    })
-    .catch(() => {
-      console.log("Something went wrong!");
-    });
-}
-
 function credit(amt, email, doc) {
   const handler = PaystackPop.setup({
     key: payHash(),
@@ -160,7 +140,7 @@ function credit(amt, email, doc) {
     callback: (response) => {
       if (response.status == "success") {
         axios
-          .post(`${point}/push`, doc)
+          .post(`${point}/posts`, doc)
           .then(() => {
             postTitle.value = null;
             postDesc.value = null;

@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "views")));
 app.use(mainRoute);
 
-const PORT = process.env.PORT || 4001;
+const PORT = process.env.PORT || 5001;
 app.use(cors);
 
 app.get("/", (req, res) => {
