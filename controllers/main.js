@@ -318,7 +318,6 @@ module.exports = {
   onStart,
   checkEmailIfExists,
   createPost,
-  pushPost,
   subscribeUser,
   unsubscribeUser,
   joinUser,
