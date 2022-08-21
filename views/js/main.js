@@ -145,7 +145,9 @@ function credit(amt, email, doc) {
             postTitle.value = null;
             postDesc.value = null;
             postUrl.value = null;
-            showMsg(`Congratulations, your post is created!`);
+            showMsg(
+              `Congratulations, your post is created and will go live in the next mail.`
+            );
           })
           .catch(() => {
             showMsg(`Oops, something went wrong, try again`);
