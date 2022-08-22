@@ -232,8 +232,10 @@ async function loadMail(data, res) {
     await writeFile(mailPath, $.html(), "utf8");
 
     findAll()
-      .then((result) => {
+      .then(async (result) => {
         if (result.length > 0) {
+          await res.status(200).json({ status: "passed", msg: "Started!" });
+
           async function send(i, items, cb) {
             if (i >= items.length) return cb();
 
@@ -257,9 +259,7 @@ async function loadMail(data, res) {
 
           send(0, result, () => {
             console.log("Completed!");
-            return res
-              .status(200)
-              .json({ status: "passed", msg: "Completed!" });
+            return;
           });
         } else {
           return res
