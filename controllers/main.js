@@ -28,6 +28,7 @@ const oAuth2Client = new google.auth.OAuth2(
   REDIRECT_URI
 );
 oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
+const MAIL_DELAY = 5000;
 const site = "https://www.plurg.me";
 const textDefault = `Unfortunately, your email client does not support HTML. 
           You can register with a different email, see ${site} for more info`;
@@ -254,7 +255,7 @@ async function loadMail(data, res) {
               .catch((error) => {
                 console.log(error.message);
               });
-            setTimeout(send, 10000, i + 1, items, cb);
+            setTimeout(send, MAIL_DELAY, i + 1, items, cb);
           }
 
           send(0, result, () => {
