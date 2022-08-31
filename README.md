@@ -4,7 +4,7 @@ An information mailing list, simplifying the reach to latest information on prod
 
 # Website
 
-<a href="https://www.plurg-mail.com">https://www.plurg-mail.com</a>
+<a href="https://plurg-mail.onrender.com">https://plurg-mail.onrender.com</a>
 
 # Demo
 
