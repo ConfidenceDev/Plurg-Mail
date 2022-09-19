@@ -11,6 +11,8 @@ const {
   findAll,
   checkEmail,
   newPost,
+  getPosts,
+  updatePost,
   findUser,
   newUser,
   deleteUser,
@@ -30,6 +32,9 @@ const oAuth2Client = new google.auth.OAuth2(
 oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
 const MAIL_DELAY = 5000;
 const site = "https://www.plurg.me";
+const POST_LIMIT = 5;
+const POST_MIN = 4;
+const themeList = ["Now Trending", "Trends of the Day", "Top Info"];
 const textDefault = `Unfortunately, your email client does not support HTML. 
           You can register with a different email, see ${site} for more info`;
 
@@ -66,8 +71,24 @@ async function createPost(data, res) {
   try {
     const newData = await dataModification(data);
     await newPost(newData)
-      .then(() => {
-        return res.status(200).json({ status: "passed", msg: "Success" });
+      .then(async () => {
+        await res.status(200).json({ status: "passed", msg: "Success" });
+
+        const theme = themeList[Math.floor(Math.random() * themeList.length)];
+        fetchPosts(POST_LIMIT)
+          .then((data) => {
+            if (data && data.length > 0) {
+              data.unshift({ theme: theme });
+              data.unshift({ password: "Plurg@15" });
+              loadMail(data);
+            } else {
+              console.log("Not enough data!");
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        return;
       })
       .catch((err) => {
         console.log(err);
@@ -97,6 +118,39 @@ async function dataModification(data) {
     data.imageId = imgUrl.data.id;
   }
   return data;
+}
+
+async function fetchPosts(size) {
+  try {
+    let List = [];
+    const data = await getPosts(size);
+    if (!data) {
+      console.log("No data, something went wrong!");
+      return;
+    }
+
+    if (data.length > POST_MIN) {
+      List = data;
+      Promise.allSettled(
+        data.map(async (item) => {
+          item.sent = true;
+          await updatePost(item);
+        })
+      )
+        .then(() => {
+          console.log("Posts fetched");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      console.log("No data!");
+    }
+
+    return List;
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 async function subscribeUser(data, res) {
@@ -207,9 +261,7 @@ async function removeUser(data, res) {
 async function loadMail(data, res) {
   try {
     if (data[0].password !== process.env.PASSWORD) {
-      return res
-        .status(400)
-        .json({ status: "failed", error: "Password mismatch" });
+      return;
     }
 
     const mailPath = "./template/mail.html";
@@ -260,12 +312,9 @@ async function loadMail(data, res) {
 
           send(0, result, () => {
             console.log("Completed!");
-            return;
           });
         } else {
-          return res
-            .status(403)
-            .json({ status: "failed", error: "No available user!" });
+          console.log("No available user!");
         }
       })
       .catch((error) => {
@@ -323,5 +372,4 @@ module.exports = {
   unsubscribeUser,
   joinUser,
   removeUser,
-  loadMail,
 };

@@ -47,6 +47,45 @@ async function newPost(data) {
   });
 }
 
+async function getPosts(size) {
+  return new Promise((resolve, reject) => {
+    try {
+      Posts.find({ sent: false })
+        .sort({ createdAt: 1 })
+        .limit(size)
+        .then((data) => {
+          resolve(data);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    } catch (error) {
+      console.log(error);
+      reject(error);
+    }
+  });
+}
+
+async function updatePost(data) {
+  return new Promise((resolve, reject) => {
+    try {
+      Posts.findOneAndUpdate({ _id: data._id }, data, {
+        new: true,
+        useFindAndModify: false,
+      })
+        .then(() => {
+          resolve();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } catch (error) {
+      console.log(error);
+      reject(error);
+    }
+  });
+}
+
 async function findUser(data) {
   return new Promise(async (resolve, reject) => {
     try {
@@ -102,6 +141,8 @@ module.exports = {
   findAll,
   checkEmail,
   newPost,
+  getPosts,
+  updatePost,
   findUser,
   newUser,
   deleteUser,

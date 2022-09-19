@@ -65,7 +65,7 @@ proceedBtn.addEventListener("click", async (e) => {
   let desc = postDesc.value;
   const url = postUrl.value;
   const email = postEmail.value;
-  const amt = 2 * 600;
+  const amt = 1 * 800;
 
   if (
     category === "Select" ||

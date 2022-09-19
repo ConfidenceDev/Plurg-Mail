@@ -8,7 +8,6 @@ const {
   unsubscribeUser,
   joinUser,
   removeUser,
-  loadMail,
 } = require("../controllers/main");
 
 connect();
@@ -56,13 +55,6 @@ router.get("/remove/:email", async (req, res) => {
   const data = req.params;
   if (data) {
     removeUser(data, res);
-  }
-});
-
-router.post("/load", async (req, res) => {
-  const data = req.body;
-  if (data) {
-    loadMail(data, res);
   }
 });
 
